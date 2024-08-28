@@ -1,0 +1,20 @@
+@param exampleContext: de.tschuehly.hyperspring.demo.ui.ExampleComponent.ExampleContext
+
+<script src="https://unpkg.com/htmx.org@2.0.2/dist/htmx.js"></script>
+<div id="${exampleContext.contextId}">
+    <form hx-post="/example" $unsafe{exampleContext.contextForm}>
+        <label>
+            Text
+            <input name="exampleText" type="text">
+        </label>
+        <button type="submit">
+            Submit
+        </button>
+    </form>
+
+    @for(example in  exampleContext.exampleRecordList)
+        ${example.exampleText}
+        ${example.exampleDate?.toString()}
+    @endfor
+
+</div>
