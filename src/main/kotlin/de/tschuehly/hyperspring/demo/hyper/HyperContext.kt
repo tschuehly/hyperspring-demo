@@ -8,19 +8,19 @@ import org.springframework.web.context.request.ServletRequestAttributes
 import java.util.*
 
 open class HyperContext : ViewContext {
-    val contextId: String
-    val contextForm: String
+    val hyperId: String
+    val hyperForm: String
 
     init {
         val requestContextId = getRequest()?.getHeader("_contextId")
         if (requestContextId != null) {
-            contextId = requestContextId
+            hyperId = requestContextId
             getResponse()?.setHeader("HX-Retarget", "#$requestContextId")
             getResponse()?.setHeader("HX-Reswap", "outerHTML")
         } else {
-            contextId = "context-id-${UUID.randomUUID()}"
+            hyperId = "context-id-${UUID.randomUUID()}"
         }
-        contextForm = """hx-headers='{"_contextId": "$contextId"}'"""
+        hyperForm = """hx-headers='{"_contextId": "$hyperId"}'"""
     }
 }
 

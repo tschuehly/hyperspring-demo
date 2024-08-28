@@ -1,8 +1,8 @@
 @param exampleContext: de.tschuehly.hyperspring.demo.ui.ExampleComponent.ExampleContext
 
+<div id="${exampleContext.hyperId}">
 <script src="https://unpkg.com/htmx.org@2.0.2/dist/htmx.js"></script>
-<div id="${exampleContext.contextId}">
-    <form hx-post="/example" $unsafe{exampleContext.contextForm}>
+    <form hx-post="/example" $unsafe{exampleContext.hyperForm}>
         <label>
             Text
             <input name="exampleText" type="text">
