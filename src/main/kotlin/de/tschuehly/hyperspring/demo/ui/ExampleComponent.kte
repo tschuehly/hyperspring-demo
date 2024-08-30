@@ -1,20 +1,24 @@
 @param exampleContext: de.tschuehly.hyperspring.demo.ui.ExampleComponent.ExampleContext
 
 <div id="${exampleContext.hyperId}">
-<script src="https://unpkg.com/htmx.org@2.0.2/dist/htmx.js"></script>
-    <form hx-post="/example" $unsafe{exampleContext.hyperForm}>
+    <script src="https://unpkg.com/htmx.org@2.0.2/dist/htmx.js"></script>
+    <form hx-post="/todo" $unsafe{exampleContext.hyperForm}>
         <label>
             Text
-            <input name="exampleText" type="text">
+            <input name="todo" type="text">
         </label>
         <button type="submit">
             Submit
         </button>
     </form>
-
-    @for(example in  exampleContext.exampleRecordList)
-        ${example.exampleText}
-        ${example.exampleDate?.toString()}
+    @for(example in  exampleContext.todoList)
+        <form hx-post="/todo/${example.id}/complete" $unsafe{exampleContext.hyperForm}>
+            ${example.todoText} -> Completed: ${example.completed}
+            @if(!example.completed)
+                <button type="submit">
+                    Complete
+                </button>
+            @endif
+        </form>
     @endfor
-
 </div>

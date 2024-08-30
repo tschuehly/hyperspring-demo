@@ -1,16 +1,6 @@
-CREATE TABLE EXAMPLE
+CREATE TABLE TODO
 (
     id             BIGSERIAL primary key,
-    example_text    text,
-    example_int     integer,
-    example_date    date,
-    example_boolean boolean
+    todo_text    text,
+    completed boolean default false
 );
-
-CREATE TABLE IMAGE
-(
-    id         BIGSERIAL primary key,
-    url        text,
-    example_id bigint
-        references EXAMPLE
-)
